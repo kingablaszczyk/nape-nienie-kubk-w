@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Napełnianie kubków</title>
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <style> 
+    h1 {
+            font-family: 'Lobster', cursive;
+            text-align: center;
+            font-size: 60px;
+            transform: rotate(-10deg);
+            padding: 20 px;
+    }
+
+    .kubek {
+       
+        width: 200px;
+        height: 200px;
+        border-left: 3px solid black;
+        border-right: 3px solid black;
+        border-bottom: 3px solid black;
+        border-radius: 0 0 20% 20%;
+        cursor: pointer;
+        float: left;
+        margin: 20px;
+        background-size: 200% 200%;
+        transition:background-position 500ms;
+    }
+
+ 
+    .zolty {
+        background-image: linear-gradient(to top, yellow 50%, transparent 50%);
+    }
+
+    .zielony {
+        background-image: linear-gradient(to top, green 50%, transparent 50%);
+
+    }
+    .niebieski {
+        background-image: linear-gradient(to top, blue 50%, transparent 50%);
+    }
+    .fioletowy {
+        background-image: linear-gradient(to top, purple 50%, transparent 50%);
+    }
+
+    .czerwony {
+        background-image: linear-gradient(to top, red 50%, transparent 50%);
+    }
+
+    .brazowy {
+        background-image: linear-gradient(to top, brown 50%, transparent 50%);
+    }
+    </style>
+</head>
+<body>
+    <h1>
+        Napełnianie kubków
+    </h1>
+    <div class = 'kubek zolty' poziom="0"></div>
+    <div class = 'kubek zielony' poziom="0"></div>
+    <div class = 'kubek niebieski' poziom="0"></div>
+
+    <div class = 'kubek fioletowy' poziom="0"></div>
+    <div class = 'kubek czerwony' poziom="0"></div>
+    <div class = 'kubek brazowy' poziom="0"></div>
+</body>
+<script>
+        function kubekKlik(evt) {
+            let poziom = Number(this.getAttribute('poziom'));
+            poziom += 24;
+            if(poziom <= 96) {
+                this.style.backgroundPosition = '0%' + poziom + '%';
+                this.setAttribute('poziom', poziom);
+            }
+            
+        else {
+            this.style.cursor = "not-allowed";
+        }
+        }
+
+        let kubki = document.querySelectorAll('.kubek');
+        kubki.forEach(kubek => {
+                kubek.addEventListener('click', kubekKlik)
+
+        })
+</script>
+</html>
